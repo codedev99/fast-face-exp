@@ -19,7 +19,7 @@ argparser.add_argument(
 	'-w',
 	'--weights',
 	type 	= str,
-	default = 'weights/weights.pkl',
+	default = 'weights/weights.pth',
 	help 	= "Path to FFENet weights file")
 
 argparser.add_argument(
@@ -48,7 +48,7 @@ def main(argv):
 
 	if args.mode == 1:
 		pass
-	elif arg.mode == 2:
+	elif args.mode == 2:
 		pass
 	elif args.mode == 3:
 		camfeed_inference(args.weights, device)
