@@ -1,3 +1,4 @@
 
 *.pth
 *.xml
+_pycache_/
