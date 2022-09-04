@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import json
 import torch
 from torch.hub import download_url_to_file
 from frontend import *
@@ -19,8 +20,8 @@ argparser.add_argument(
 	'-w',
 	'--weights',
 	type 	= str,
-	default = 'weights/weights.pth',
-	help 	= "Path to FFENet weights file")
+	default = 'weights/weights.pkl',
+	help 	= "Path to EmotionNet weights file")
 
 argparser.add_argument(
 	'-d',
@@ -29,7 +30,14 @@ argparser.add_argument(
 	default = "cpu",
 	help	= "Compute device - 'cuda' or 'cpu'")
 
-PRETRAINED_WEIGHTS_URL = "https://github.com/codedev99/fast-face-exp/releases/download/v0.2-alpha/ffenet-22-07-2020.pth"
+argparser.add_argument(
+	'-c',
+	'--config',
+	type	= str,
+	default = "config.json",
+	help	= "Path to config.json file")
+
+PRETRAINED_WEIGHTS_URL = "https://drive.google.com/file/d/1N5XhvrHcicpAz0CmUX0Vw99oamLYyRFY/view?usp=sharing"
 
 class ModeError(Exception):
 	def __init__(self):
@@ -44,14 +52,16 @@ def main(argv):
 	if not torch.cuda.is_available():
 		device = 'cpu'
 
-
+	with open(args.config) as config_buffer:
+		config = json.loads(config_buffer.read())
 
 	if args.mode == 1:
-		pass
+		files_inference(args.weights, config["inference"]["files"]["data_folder"],
+							config["inference"]["emotionnet"]["class_labels"], device)
 	elif args.mode == 2:
-		pass
+		camfeed_inference(args.weights, config["inference"]["emotionnet"]["class_labels"], device)
 	elif args.mode == 3:
-		camfeed_inference(args.weights, device)
+		print("Not implemented yet. Please wait for version update.")
 	else:
 		raise ModeError
 

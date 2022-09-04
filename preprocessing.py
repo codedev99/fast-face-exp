@@ -1,7 +1,44 @@
+import torch
+from torch.utils.data import Dataset
+from torch.utils.data.sampler import Sampler
+import torchvision
+from torchvision import transforms, datasets
+import os
+import numpy as np
+import collections
+import cv2
+
 def loader(path):
     image = np.asarray(cv2.imread(path)).astype(np.uint8)[..., ::-1]    #[BGR --> RGB]
     # image = np.transpose(image, (2,0,1))    # [HWC --> CHW]
-    return image.copy()
+    return image.copy() # [H x W x C ]
+
+class InferenceRAM(Dataset):
+    def __init__(self, root, loader, transform=None):
+        self.root = root
+        self.samples = os.listdir(root)
+        self.loader = loader
+        self.new_samples = self._get_ram_data()
+        self.transform = transform
+    
+    def _get_ram_data(self):
+        new_samples = []
+        for sample in self.samples:
+            path = os.path.join(self.root, sample)
+            img = self.loader(path)
+            new_samples.append(img)
+        
+        return new_samples
+    
+    def __len__(self):
+        return len(self.samples)
+    
+    def __getitem__(self, idx):
+        sample = self.new_samples[idx]
+        if self.transform is not None:
+            sample = self.transform(sample)
+
+        return sample
 
 class FERPlusRam(Dataset):
     def __init__(self, root, loader, transform=None, target_transform=None):

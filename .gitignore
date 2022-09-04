@@ -1,4 +1,6 @@
-
 *.pth
 *.xml
-_pycache_/
+Untitled.ipynb
+__pycache__/
+data/
+fer-final.zip
