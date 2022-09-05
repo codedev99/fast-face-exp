@@ -1,0 +1,13 @@
+{
+	"inference":
+	{
+		"files":
+		{
+			"data_folder"	: "./data/image-files"
+		},
+		"emotionnet":
+		{
+			"class_labels"	: ["Neutral", "Happy", "Surprised", "Sad", "Angry"]
+		}
+	}
+}

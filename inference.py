@@ -37,7 +37,7 @@ argparser.add_argument(
 	default = "config.json",
 	help	= "Path to config.json file")
 
-PRETRAINED_WEIGHTS_URL = "https://drive.google.com/file/d/1N5XhvrHcicpAz0CmUX0Vw99oamLYyRFY/view?usp=sharing"
+PRETRAINED_WEIGHTS_URL = "https://github.com/codedev99/fast-face-exp/releases/download/v0.3/newenet_paperv3_exp1_net2_5emo.pkl"
 
 class ModeError(Exception):
 	def __init__(self):
