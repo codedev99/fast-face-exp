@@ -1,5 +1,12 @@
 #! /usr/bin/env python
 
+"""
+Run face expression detection locally on your system in several modes:
+1. On a library of images.
+2. On a video stream from your webcam, in real time.
+3. On a saved video file (currently unimplemented).
+"""
+
 import argparse
 import os
 import json
@@ -14,7 +21,7 @@ argparser.add_argument(
 	'-m',
 	'--mode',
 	type	= int,
-	help	= "Mode of inference (See README)")
+	help	= "Mode of inference (1, 2 or 3; See README)")
 
 argparser.add_argument(
 	'-w',

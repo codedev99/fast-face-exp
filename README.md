@@ -21,6 +21,7 @@ The FFE (fast face expression) system can be run in two different modes:
 
 1. Run inference on a library of images.
 2. Real-time inference from your local webcam feed.
+3. Video file inference (currently unimplemented).
 
 ### 1. Files Inference
 This mode allows you to specify the path to a specific folder containing images. The FFE system then runs inference on these images, marking the detected face expression with a bounding box and type of expression. This marked image is saved in locally in a new folder.
