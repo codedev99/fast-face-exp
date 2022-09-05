@@ -7,6 +7,7 @@ Rapid, accurate, face expression inference. Transfer learning, PyTorch, OpenCV
 # 
 
 ![](https://github.com/codedev99/fast-face-exp/releases/download/v0.3/detect.jpg)
+
 This repository allows you to run face expression detection locally on your system; either on a library of images, or even a video stream from your webcam, in real time. This repo is a PyTorch implementation of the EmotionNet model described in the paper [EmotionNet: ResNeXt Inspired CNN Architecture for Emotion Analysis on Raspberry Pi](https://ieeexplore.ieee.org/document/9573569).
 
 The FFE system detects the following five facial expressions: Neutral, Happy, Surprised, Sad, Angry.
